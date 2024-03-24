@@ -19,6 +19,7 @@
       vertico
       orderless
       lsp-mode
+      lsp-ui
       nix-mode
       flycheck
       rustic
@@ -69,6 +70,15 @@
 
 (setq lsp-nix-nil-formatter ["nixpkgs-fmt"])
 (add-hook 'nix-mode-hook 'lsp-deferred)
+(eval-after-load 'lsp-mode
+  '(let ((map (define-prefix-command 'rk/lsp-prefix-map)))
+    (define-key lsp-mode-map (kbd "C-c l") map)
+    (define-key map (kbd "a") 'helm-lsp-code-actions)
+    (define-key map (kbd "a") 'lsp-rename)
+    (define-key map (kbd "l") 'lsp-ui-flycheck-list)
+    (define-key map (kbd "L") 'flycheck-list-errors)
+    (define-key map (kbd "q") 'lsp-workspace-restart)
+    (define-key map (kbd "Q") 'lsp-workspace-shutdown)))
 
 ;; ---------------------
 
