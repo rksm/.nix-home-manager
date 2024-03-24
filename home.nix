@@ -20,6 +20,7 @@
       orderless
       lsp-mode
       lsp-ui
+      projectile
       nix-mode
       flycheck
       rustic
@@ -65,6 +66,11 @@
 (require 'orderless)
 (setq completion-styles '(orderless basic)
       completion-category-overrides '((file (styles basic partial-completion))))
+
+;; ---------------------
+
+(projectile-mode 1)
+(define-key global-map (kbd "C-c p") projectile-command-map)
 
 ;; ---------------------
 
