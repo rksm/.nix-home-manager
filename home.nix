@@ -101,7 +101,15 @@
     enableBashIntegration = true;
   };
 
-  programs.gh = {
+  programs.ssh = {
     enable = true;
+    matchBlocks = {
+      github = {
+        hostname = "github.com";
+        user = "git";
+        identitiesOnly = true;
+        identityFile = [ "~/.ssh/id_rsa.github" ];
+      };
+    };
   };
 }
