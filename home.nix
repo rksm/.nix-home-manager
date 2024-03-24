@@ -100,4 +100,8 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
+
+  programs.gh = {
+    enable = true;
+  };
 }
