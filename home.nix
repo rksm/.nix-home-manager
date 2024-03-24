@@ -28,6 +28,7 @@
       expand-region
       key-chord
       multiple-cursors
+      avy
     ];
   };
 
@@ -139,6 +140,15 @@
 (global-set-key (kbd "C-M-n") 'mc/mark-next-lines)
 (global-set-key (kbd "C-M-p") 'mc/mark-previous-lines)
 (global-set-key (kbd "C-x R") 'mc/edit-lines)
+
+;; --------------
+
+(avy-setup-default) ; isearch keys
+(key-chord-define-global "bf" 'avy-goto-char-2-above)
+(key-chord-define-global "pn" 'avy-goto-char-2-below)
+(global-set-key (kbd "C-:") 'avy-goto-char)
+(global-set-key (kbd "C-'") 'avy-goto-char-timer)
+
 '';
 
   home.packages = with pkgs; [
