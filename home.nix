@@ -104,7 +104,7 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      github = {
+      "github.com" = {
         hostname = "github.com";
         user = "git";
         identitiesOnly = true;
