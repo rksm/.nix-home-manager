@@ -32,7 +32,6 @@
       tab-width 2
       dired-recursive-deletes 'always
       dired-recursive-copies 'always
-      dired-clean-confirm-killing-deleted-buffers nil
       initial-major-mode 'fundamental-mode
       inhibit-startup-message t
       ring-bell-function 'ignore)
@@ -42,11 +41,8 @@
               compilation-scroll-output t
               compilation-ask-about-save nil
               truncate-lines t
-              truncate-partial-width-windows nil
               make-backup-files t
               backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
-              kept-new-versions 6
-              kept-old-versions 2
               delete-old-versions t
               auto-save-file-name-transforms `(("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" ,temporary-file-directory t)
                                                (".*" ,(expand-file-name "backups" user-emacs-directory) t))
@@ -64,12 +60,13 @@
       completion-category-overrides '((file (styles basic partial-completion))))
 
 ;; ---------------------
+
 (setq lsp-nix-nil-formatter ["nixpkgs-fmt"])
 (add-hook 'nix-mode-hook 'lsp-deferred)
 
 ;; ---------------------
+
 (defun rk/rustic-mode-hook ()
-  ;;(rustic-setup-lsp)
   (flycheck-mode)
   (setq-local lsp-inlay-hint-enable t)
   (add-hook 'before-save-hook 'lsp-format-buffer nil t)
